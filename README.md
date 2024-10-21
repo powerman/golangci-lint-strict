@@ -7,3 +7,7 @@ recommend some premature optimization) or too annoying in real projects without 
 
 This is recommended config for a new projects, but existing projects may require some fair
 amount of work to start using this config.
+
+There are 2 versions of each config: `VERSION/.golangci.yml` and
+`VERSION/reference/.golangci.yml`. They are the same (first one is generated from second one
+using `scripts/convert`).
