@@ -1,0 +1,3 @@
+[tools]
+"ubi:mikefarah/yq" = "4.44.3"
+"ubi:santhosh-tekuri/jsonschema" = "6.0.1"
