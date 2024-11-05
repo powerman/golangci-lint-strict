@@ -1,3 +1,5 @@
 [tools]
+go = "1.23.2"
+"go:github.com/erning/gorun" = "latest"
 "ubi:mikefarah/yq" = "4.44.3"
 "ubi:santhosh-tekuri/jsonschema" = "6.0.1"

@@ -2,7 +2,14 @@
 experimental = true # Required to use lockfile.
 lockfile = true
 
+[env]
+# Workaround for non-working templates in tasks.*.env - this should be tasks.*.env.GOWORK.
+goscripts = '{{ config_root }}/scripts/go.work'
+
 [tools]
+go = "latest"
+# gorun: improved `go run`
+"go:github.com/erning/gorun" = "latest"
 # yq: jq for yaml
 "ubi:mikefarah/yq" = "latest"
 # jv: json schema validator for yaml
@@ -16,9 +23,13 @@ depends = ['convert/*']
 [tasks."convert/1.60.3"]
 sources = ['1.60.3/reference/.golangci.yml']
 outputs = ['1.60.3/.golangci.yml']
-run = 'scripts/convert.sh 1.60.3 1.60'
+# Workaround for non-working templates in tasks.*.dir - this should be dir='{{config_root}}'.
+run = 'env -C "$root" "GOWORK=$goscripts" gorun ./scripts/convert 1.60.3 1.60'
+# run = 'scripts/convert.sh 1.60.3 1.60'
 
 [tasks."convert/1.61.0"]
 sources = ['1.61.0/reference/.golangci.yml']
 outputs = ['1.61.0/.golangci.yml']
-run = 'scripts/convert.sh 1.61.0 1.60'
+# Workaround for non-working templates in tasks.*.dir - this should be dir='{{config_root}}'.
+run = 'env -C "$root" "GOWORK=$goscripts" gorun ./scripts/convert 1.61.0 1.60'
+# run = 'scripts/convert.sh 1.61.0 1.60'
