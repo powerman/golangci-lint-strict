@@ -1,13 +1,13 @@
 [settings]
 experimental = true # Required to use lockfile.
-lockfile = true
+lockfile = true     # DO NOT FORGET TO `touch mise.lock`!
 
 [tools]
 go = "latest"
 # gorun: improved `go run`
 "go:github.com/erning/gorun" = "latest"
 # yq: jq for yaml
-"ubi:mikefarah/yq" = "latest"
+yq = "latest"
 # jv: json schema validator for yaml
 "ubi:santhosh-tekuri/jsonschema" = { version = "latest", exe = "jv" }
 
