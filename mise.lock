@@ -1,5 +1,17 @@
-[tools]
-go = "1.23.2"
-"go:github.com/erning/gorun" = "latest"
-"ubi:santhosh-tekuri/jsonschema" = "6.0.1"
-yq = "4.44.3"
+[tools.go]
+version = "1.23.2"
+
+[tools.go.checksums]
+"go1.23.2.linux-amd64.tar.gz" = "sha256:542d3c1705f1c6a1c5a80d5dc62e2e45171af291e755d591c5e6531ef63b454e"
+
+[tools."go:github.com/erning/gorun"]
+version = "latest"
+
+[tools."ubi:santhosh-tekuri/jsonschema"]
+version = "6.0.1"
+
+[tools.yq]
+version = "4.44.3"
+
+[tools.yq.checksums]
+yq-linux-x86_64 = "sha256:a2c097180dd884a8d50c956ee16a9cec070f30a7947cf4ebf87d5f36213e9ed7"
