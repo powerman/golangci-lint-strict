@@ -41,3 +41,8 @@ run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 1.64.8 1.64'
 sources = ['2.1.6/reference/.golangci.yml']
 outputs = ['2.1.6/.golangci.yml']
 run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 2.1.6 2.1.6'
+
+[tasks."convert/2.2.1"]
+sources = ['2.2.1/reference/.golangci.yml']
+outputs = ['2.2.1/.golangci.yml']
+run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 2.2.1 2.1.6'
