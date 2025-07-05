@@ -1,17 +1,24 @@
 [tools.go]
-version = "1.23.2"
+version = "1.24.4"
+backend = "core:go"
 
 [tools.go.checksums]
-"go1.23.2.linux-amd64.tar.gz" = "sha256:542d3c1705f1c6a1c5a80d5dc62e2e45171af291e755d591c5e6531ef63b454e"
+"go1.24.4.linux-amd64.tar.gz" = "sha256:77e5da33bb72aeaef1ba4418b6fe511bc4d041873cbf82e5aa6318740df98717"
 
 [tools."go:github.com/erning/gorun"]
 version = "latest"
+backend = "go:github.com/erning/gorun"
 
 [tools."ubi:santhosh-tekuri/jsonschema"]
-version = "6.0.1"
+version = "6.0.2"
+backend = "ubi:santhosh-tekuri/jsonschema"
+
+[tools."ubi:santhosh-tekuri/jsonschema".checksums]
+jv-jv-linux-x86_64 = "sha256:905cbe1e59b36771ea5b4d9479141cb07c4722462cef8f81fda7cd4fbdbc2c9c"
 
 [tools.yq]
-version = "4.44.3"
+version = "4.45.4"
+backend = "ubi:mikefarah/yq"
 
 [tools.yq.checksums]
-yq-linux-x86_64 = "sha256:a2c097180dd884a8d50c956ee16a9cec070f30a7947cf4ebf87d5f36213e9ed7"
+yq-linux-x86_64 = "sha256:b96de04645707e14a12f52c37e6266832e03c29e95b9b139cddcae7314466e69"
