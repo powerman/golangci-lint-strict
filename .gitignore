@@ -5,11 +5,5 @@
 # **/name   - exclude path (* doesn't match /) to file/dir "name"  in any dir including project root
 # na/**/me  - exclude path (* doesn't match /) to file/dir "na/me", "na/*/me", "na/*/*/me", …
 # !name     - include previously excluded path …
-**/mise/config.local.toml
-**/mise.local.toml
-**/.mise/config.local.toml
-**/.mise.local.toml
-**/mise/config.*.local.toml
-**/mise.*.local.toml
-**/.mise/config.*.local.toml
-**/.mise.*.local.toml
+**/*mise.local.toml
+**/*mise/config.local.toml

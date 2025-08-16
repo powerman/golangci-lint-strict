@@ -1,5 +1,7 @@
 # golangci-lint-strict
 
+[![License MIT](https://img.shields.io/badge/license-MIT-royalblue.svg)](LICENSE)
+
 Sane strict configuration for [golangci-lint](https://github.com/golangci/golangci-lint).
 
 Enabled all linters/rules except ones which will likely hurt readability (e.g. because they
