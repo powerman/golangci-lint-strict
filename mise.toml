@@ -15,36 +15,48 @@ yq = "latest"
 
 [tasks.convert]
 description = "Convert all versions"
-depends = ['convert/*']
+depends = ['convert:*']
 
 # When we'll have a lot of these we can replace them all with a task-to-generate-tasks. :-D
-[tasks."convert/1.60.3"]
+[tasks."convert:1.60.3"]
+description = "Convert 1.60.3"
 sources = ['1.60.3/reference/.golangci.yml']
 outputs = ['1.60.3/.golangci.yml']
 run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 1.60.3 1.60'
 # run = 'scripts/convert.sh 1.60.3 1.60'
 
-[tasks."convert/1.61.0"]
+[tasks."convert:1.61.0"]
+description = "Convert 1.61.0"
 sources = ['1.61.0/reference/.golangci.yml']
 outputs = ['1.61.0/.golangci.yml']
 run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 1.61.0 1.60'
 
-[tasks."convert/1.62.0"]
+[tasks."convert:1.62.0"]
+description = "Convert 1.62.0"
 sources = ['1.62.0/reference/.golangci.yml']
 outputs = ['1.62.0/.golangci.yml']
 run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 1.62.0 1.62'
 
-[tasks."convert/1.64.8"]
+[tasks."convert:1.64.8"]
+description = "Convert 1.64.8"
 sources = ['1.64.8/reference/.golangci.yml']
 outputs = ['1.64.8/.golangci.yml']
 run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 1.64.8 1.64'
 
-[tasks."convert/2.1.6"]
+[tasks."convert:2.1.6"]
+description = "Convert 2.1.6"
 sources = ['2.1.6/reference/.golangci.yml']
 outputs = ['2.1.6/.golangci.yml']
-run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 2.1.6 2.1.6'
+run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 2.1.6 2.1'
 
-[tasks."convert/2.2.1"]
+[tasks."convert:2.2.1"]
+description = "Convert 2.2.1"
 sources = ['2.2.1/reference/.golangci.yml']
 outputs = ['2.2.1/.golangci.yml']
-run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 2.2.1 2.1.6'
+run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 2.2.1 2.2'
+
+[tasks."convert:2.4.0"]
+description = "Convert 2.4.0"
+sources = ['2.4.0/reference/.golangci.yml']
+outputs = ['2.4.0/.golangci.yml']
+run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 2.4.0 2.3'
