@@ -350,7 +350,7 @@ linters:
           - gosec
           - maintidx
           - reassign
-      - source: const # Define global const-vars like: var SomeGlobal = []int{42} // Const.
+      - source: '[Cc]onst' # Define global const-vars like: var SomeGlobal = []int{42} // Const.
         linters:
           - gochecknoglobals
       - path: _test\.go|testing(_.*)?\.go
