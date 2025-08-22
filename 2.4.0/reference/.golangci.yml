@@ -4072,7 +4072,7 @@ formatters:
     - gofumpt
     - goimports
     - golines
-    - swaggo
+    # - swaggo
 
   # Formatters settings.
   settings:
