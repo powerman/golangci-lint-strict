@@ -1,6 +1,6 @@
 module github.com/powerman/golangci-lint-strict/scripts
 
-go 1.25.0
+go 1.26.0
 
 require (
 	github.com/alecthomas/kong v1.12.1

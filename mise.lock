@@ -1,23 +1,15 @@
-[[tools.go]]
-version = "1.25.1"
-backend = "core:go"
+[[tools."github:santhosh-tekuri/jsonschema"]]
+version = "6.0.2"
+backend = "github:santhosh-tekuri/jsonschema"
 
-[tools.go.platforms.linux-x64]
-checksum = "sha256:7716a0d940a0f6ae8e1f3b3f4f36299dc53e31b16840dbd171254312c41ca12e"
-size = 59660846
-url = "https://dl.google.com/go/go1.25.1.linux-amd64.tar.gz"
+[[tools.go]]
+version = "1.26.0"
+backend = "core:go"
 
 [[tools."go:github.com/erning/gorun"]]
 version = "latest"
 backend = "go:github.com/erning/gorun"
 
-[[tools."ubi:santhosh-tekuri/jsonschema"]]
-version = "6.0.2"
-backend = "ubi:santhosh-tekuri/jsonschema"
-
 [[tools.yq]]
-version = "4.47.2"
-backend = "ubi:mikefarah/yq"
-
-[tools.yq.platforms.linux-x64-yq]
-checksum = "blake3:591d393685cfa0f7698802eede1b9697b7772b072d734be69b0163be90a7787a"
+version = "4.52.4"
+backend = "aqua:mikefarah/yq"
