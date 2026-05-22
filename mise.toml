@@ -77,3 +77,9 @@ description = "Convert 2.11.4"
 sources = ['2.11.4/reference/.golangci.yml']
 outputs = ['2.11.4/.golangci.yml']
 run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 2.11.4 2.11'
+
+[tasks."convert:2.12.2"]
+description = "Convert 2.12.2"
+sources = ['2.12.2/reference/.golangci.yml']
+outputs = ['2.12.2/.golangci.yml']
+run = 'GOWORK="$PWD/scripts/go.work" gorun ./scripts/convert 2.12.2 2.12'
