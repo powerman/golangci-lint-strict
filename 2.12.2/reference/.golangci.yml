@@ -2641,7 +2641,7 @@ linters:
         # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#exported
         - name: exported
           #severity: warning
-          #disabled: false
+          disabled: true # Duplicates godoclint.
           #exclude: [""]
           #arguments:
           # - "check-private-receivers"
@@ -2738,8 +2738,8 @@ linters:
           #severity: warning
           #disabled: false
           #exclude: [""]
-          #arguments:
-            #- "^[a-z][a-z0-9]{0,}$"
+          arguments:
+            - ^[a-z][a-z0-9]{0,}$|^grpc_\w+$
             # Or this parameter:
             #- allow-regex: "^[a-z][a-z0-9]{0,}$"
             #  deny-regex: '^v\d+$'
@@ -4464,11 +4464,9 @@ linters:
 
     # Excluding configuration per-path, per-linter, per-text and per-source.
     rules:
-      - path: '(.+)\.go$'
-        text: "declaration of \"(log|err|ctx)\" shadows"
-
-      - path: '(.+)\.go$'
-        text: "missing cases in switch of type \\S+: \\S+_UNSPECIFIED$"
+      - linters:
+          - govet
+        text: declaration of "(log|err|ctx)" shadows
 
       # Exclude some linters from running on tests files.
       - path: _test\.go|testing(_.*)?\.go
@@ -4487,12 +4485,8 @@ linters:
           - maintidx
           - reassign
 
-      - source: "[Cc]onst" # Define global const-vars like: var SomeGlobal = []int{42} // Const.
-        linters:
-          - gochecknoglobals
-
       - path: _test\.go|testing(_.*)?\.go
-        text: "(unnamedResult|exitAfterDefer|rangeValCopy|unnecessaryBlock)"
+        text: (unnamedResult|exitAfterDefer|rangeValCopy|unnecessaryBlock)
         linters:
           - gocritic
 
@@ -4503,6 +4497,10 @@ linters:
 
       # Files with go:embed directives are designed to contain global constants.
       - path: ^(.*/)?embed.go$
+        linters:
+          - gochecknoglobals
+
+      - source: '[Cc]onst' # Define global const-vars like: var SomeGlobal = []int{42} // Const.
         linters:
           - gochecknoglobals
 
