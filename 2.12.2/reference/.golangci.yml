@@ -3693,7 +3693,19 @@ linters:
         - yaml
         - yml
         - toml
+        - cmd
+        - arg
+        - embed
+        - hidden
+        - passthrough
+        - optional
+        - required
+        - default
+        - envprefix
         - env
+        - name
+        - enum
+        - help
         - mod
         - mapstructure
         - binding
@@ -4478,6 +4490,7 @@ linters:
           - bodyclose
           - dupl
           - errcheck
+          - fatcontext
           - forcetypeassert
           - funlen
           - gochecknoglobals
@@ -4628,7 +4641,7 @@ formatters:
       # Default: false
       #shorten-comments: true
       # Default: true
-      #reformat-tags: false
+      reformat-tags: false
       # Split chained methods on the dots as opposed to the arguments.
       # Default: true
       #chain-split-dots: false

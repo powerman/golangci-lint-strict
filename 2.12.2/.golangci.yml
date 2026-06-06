@@ -319,7 +319,19 @@ linters:
         - yaml
         - yml
         - toml
+        - cmd
+        - arg
+        - embed
+        - hidden
+        - passthrough
+        - optional
+        - required
+        - default
+        - envprefix
         - env
+        - name
+        - enum
+        - help
         - mod
         - mapstructure
         - binding
@@ -364,6 +376,7 @@ linters:
           - bodyclose
           - dupl
           - errcheck
+          - fatcontext
           - forcetypeassert
           - funlen
           - gochecknoglobals
@@ -417,6 +430,7 @@ formatters:
     golines:
       max-len: 200
       tab-len: 8
+      reformat-tags: false
   exclusions:
     generated: strict
     paths:
