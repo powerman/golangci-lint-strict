@@ -2520,8 +2520,8 @@ linters:
           #severity: warning
           #disabled: false
           #exclude: [""]
-          #arguments:
-          #  - allow-types-before: "*testing.T,*github.com/user/repo/testing.Harness"
+          arguments:
+            - allowTypesBefore: "*testing.T,*check.C" # Test helpers keep t first.
         # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#context-keys-type
         - name: context-keys-type
           #severity: warning
@@ -3709,6 +3709,7 @@ linters:
         - mod
         - mapstructure
         - binding
+        - mold
         - validate
       # Whether enable strict style.
       # In this style, the tags will be sorted and aligned in the dictionary order,
@@ -4543,6 +4544,14 @@ linters:
       - linters:
           - lll
         source: "^//go:generate "
+
+      - linters:
+          - staticcheck
+        text: 'SA5008: duplicate struct tag "set"' # Valid in Kong CLI.
+
+      - linters:
+          - godoclint
+        text: should have a godoc \("(String|Error|Format|(Marshal|Unmarshal)(Text|JSON))"\)
 
     # Which file paths to exclude: they will be analyzed, but issues from them won't be reported.
     # "/" will be replaced by the current OS file path separator to properly work on Windows.

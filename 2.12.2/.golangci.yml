@@ -188,6 +188,8 @@ linters:
         - name: confusing-results
         - name: constant-logical-expr
         - name: context-as-argument
+          arguments:
+            - allowTypesBefore: '*testing.T,*check.C' # Test helpers keep t first.
         - name: context-keys-type
         - name: cyclomatic
           disabled: true # Duplicates cyclop and gocyclo linters.
@@ -335,6 +337,7 @@ linters:
         - mod
         - mapstructure
         - binding
+        - mold
         - validate
       strict: true
     tagliatelle:
@@ -404,6 +407,12 @@ linters:
       - linters:
           - lll
         source: '^//go:generate '
+      - linters:
+          - staticcheck
+        text: 'SA5008: duplicate struct tag "set"' # Valid in Kong CLI.
+      - linters:
+          - godoclint
+        text: should have a godoc \("(String|Error|Format|(Marshal|Unmarshal)(Text|JSON))"\)
     paths:
       - \.[\w-]+\.go$ # Use this pattern to name auto-generated files.
 formatters:
