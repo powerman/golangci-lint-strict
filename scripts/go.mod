@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/alecthomas/kong v1.15.0
-	github.com/bitfield/script v0.24.1
+	github.com/bitfield/script v0.24.3
 )
 
 require (
