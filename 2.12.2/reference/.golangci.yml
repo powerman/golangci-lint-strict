@@ -301,6 +301,19 @@ linters:
               desc: Should be replaced by github.com/grpc-ecosystem/go-grpc-middleware/v2
             - pkg: github.com/grpc-ecosystem/go-grpc-prometheus
               desc: Should be replaced by github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus
+        no-test-libs-in-prod:
+          files:
+            - "$all"
+            - "!$test"
+            - "!**/*test/**"
+            - "!**/test*/**"
+          deny:
+            - pkg: testing
+              desc: test-only; production code must not import it
+            - pkg: github.com/powerman/check
+              desc: test-only; production code must not import it
+            - pkg: go.uber.org/mock/gomock
+              desc: test-only; production code must not import it
 
     #dogsled:
       # Checks assignments with too many blank identifiers.
@@ -2521,7 +2534,7 @@ linters:
           #disabled: false
           #exclude: [""]
           arguments:
-            - allowTypesBefore: "*testing.T,*check.C" # Test helpers keep t first.
+            - allowTypesBefore: '*testing.T,*check.TB,*check.C' # Test helpers keep t first.
         # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#context-keys-type
         - name: context-keys-type
           #severity: warning
