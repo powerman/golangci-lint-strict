@@ -190,10 +190,10 @@ linters:
       # Default: false
       #check-consumption: true
 
-    #copyloopvar:
+    copyloopvar:
       # Check all assigning the loop variable to another variable.
       # Default: false
-      #check-alias: true
+      check-alias: true
 
     #cyclop:
       # The maximal code complexity to report.
@@ -630,7 +630,7 @@ linters:
       # Default: 30 (but we recommend 10-20)
       min-complexity: 20
 
-    #goconst:
+    goconst:
       # Minimal length of string constant.
       # Default: 3
       #min-len: 2
@@ -1969,7 +1969,7 @@ linters:
     importas:
       # Do not allow unaliased imports of aliased packages.
       # Default: false
-      #no-unaliased: true
+      no-unaliased: true
       # Do not allow non-required aliases.
       # Default: false
       #no-extra-aliases: true
@@ -2225,7 +2225,7 @@ linters:
       # To check functions with only two return values (`return nil, nil`).
       # If disabled then returns like `return nil, nil, ..., nil` are supported.
       # Default: true
-      #only-two: false
+      only-two: false
       # In addition, detect opposite situation (simultaneous return of non-nil error and valid value).
       # E.g, `return clone, fh.indexer.Update(clone)` will be considered as invalid.
       # Default: false
@@ -2433,8 +2433,8 @@ linters:
 
       # Enable validation of comment directives.
       # See https://github.com/mgechev/revive#comment-directives
-      #directives:
-        #- name: specify-disable-reason
+      directives:
+        - name: specify-disable-reason
         #  severity: error
 
       # Sets the default failure confidence.
@@ -3155,17 +3155,17 @@ linters:
       #    # If there are no arguments in the function, a negative value must be passed.
       #    args-pos: 2
 
-    #spancheck:
+    spancheck:
       # Checks to enable.
       # Options include:
       # - `end`: check that `span.End()` is called
       # - `record-error`: check that `span.RecordError(err)` is called when an error is returned
       # - `set-status`: check that `span.SetStatus(codes.Error, msg)` is called when an error is returned
       # Default: ["end"]
-      #checks:
-      #  - end
-      #  - record-error
-      #  - set-status
+      checks:
+        - end
+        - record-error
+        - set-status
       # A list of regexes for function signatures that silence `record-error` and `set-status` reports
       # if found in the call path to a returned error.
       # https://github.com/jjti/go-spancheck#ignore-check-signatures
@@ -3180,7 +3180,7 @@ linters:
       #extra-start-span-signatures:
       #  - "github.com/user/repo/telemetry/trace.Start:opentelemetry"
 
-    #staticcheck:
+    staticcheck:
       # https://staticcheck.dev/docs/configuration/options/#dot_import_whitelist
       # Default: ["github.com/mmcloughlin/avo/build", "github.com/mmcloughlin/avo/operand", "github.com/mmcloughlin/avo/reg"]
       #dot-import-whitelist:
@@ -3195,7 +3195,8 @@ linters:
       # Example (to disable some checks): [ "all", "-SA1000", "-SA1001"]
       # Run `GL_DEBUG=staticcheck golangci-lint run --enable=staticcheck` to see all available checks and enabled by config checks.
       # Default: ["all", "-ST1000", "-ST1003", "-ST1016", "-ST1020", "-ST1021", "-ST1022"]
-      #checks:
+      checks:
+        - all
         # Invalid regular expression.
         # https://staticcheck.dev/docs/checks/#SA1000
         #- SA1000
@@ -3483,28 +3484,28 @@ linters:
         #- SA9009
         # Incorrect or missing package comment.
         # https://staticcheck.dev/docs/checks/#ST1000
-        #- ST1000
+        - -ST1000 # Duplicates revive:package-comments.
         # Dot imports are discouraged.
         # https://staticcheck.dev/docs/checks/#ST1001
-        #- ST1001
+        - -ST1001 # Duplicates revive:dot-imports.
         # Poorly chosen identifier.
         # https://staticcheck.dev/docs/checks/#ST1003
-        #- ST1003
+        - -ST1003 # Duplicates revive:var-naming, revive:error-naming, revive:package-naming, revive:import-alias-naming.
         # Incorrectly formatted error string.
         # https://staticcheck.dev/docs/checks/#ST1005
-        #- ST1005
+        - -ST1005 # Duplicates revive:string-format and revive:error-strings.
         # Poorly chosen receiver name.
         # https://staticcheck.dev/docs/checks/#ST1006
-        #- ST1006
+        - -ST1006 # Duplicates revive:receiver-naming.
         # A function's error value should be its last return value.
         # https://staticcheck.dev/docs/checks/#ST1008
-        #- ST1008
+        - -ST1008 # Duplicates revive:error-return.
         # Poorly chosen name for variable of type 'time.Duration'.
         # https://staticcheck.dev/docs/checks/#ST1011
         #- ST1011
         # Poorly chosen name for error variable.
         # https://staticcheck.dev/docs/checks/#ST1012
-        #- ST1012
+        - -ST1012 # Duplicates errname linter.
         # Should use constants for HTTP error codes, not magic numbers.
         # https://staticcheck.dev/docs/checks/#ST1013
         #- ST1013
@@ -3513,7 +3514,7 @@ linters:
         #- ST1015
         # Use consistent method receiver names.
         # https://staticcheck.dev/docs/checks/#ST1016
-        #- ST1016
+        - -ST1016 # Duplicates revive:receiver-naming (consistency).
         # Don't use Yoda conditions.
         # https://staticcheck.dev/docs/checks/#ST1017
         #- ST1017
@@ -3522,16 +3523,16 @@ linters:
         #- ST1018
         # Importing the same package multiple times.
         # https://staticcheck.dev/docs/checks/#ST1019
-        #- ST1019
+        - -ST1019 # Duplicates revive:duplicated-imports.
         # The documentation of an exported function should start with the function's name.
         # https://staticcheck.dev/docs/checks/#ST1020
-        #- ST1020
+        - -ST1020 # Duplicates godoclint.
         # The documentation of an exported type should start with type's name.
         # https://staticcheck.dev/docs/checks/#ST1021
-        #- ST1021
+        - -ST1021 # Duplicates godoclint.
         # The documentation of an exported variable or constant should start with variable's name.
         # https://staticcheck.dev/docs/checks/#ST1022
-        #- ST1022
+        - -ST1022 # Duplicates godoclint.
         # Redundant type in variable declaration.
         # https://staticcheck.dev/docs/checks/#ST1023
         #- ST1023
@@ -4020,7 +4021,7 @@ linters:
       # Default: false
       #constant-kind: true
 
-    #usetesting:
+    usetesting:
       # Enable/disable `os.CreateTemp("", ...)` detections.
       # Default: true
       #os-create-temp: false
@@ -4035,7 +4036,7 @@ linters:
 
       # Enable/disable `os.TempDir()` detections.
       # Default: false
-      #os-temp-dir: true
+      os-temp-dir: true
 
       # Enable/disable `os.Chdir()` detections.
       # Disabled if Go < 1.24.
@@ -4045,12 +4046,12 @@ linters:
       # Enable/disable `context.Background()` detections.
       # Disabled if Go < 1.24.
       # Default: false
-      #context-background: true
+      context-background: true
 
       # Enable/disable `context.TODO()` detections.
       # Disabled if Go < 1.24.
       # Default: false
-      #context-todo: true
+      context-todo: true
 
     #unconvert:
       # Remove conversions that force intermediate rounding.
@@ -4098,7 +4099,7 @@ linters:
       #check-sql-injection: true
       # Detects transaction leaks.
       # Default: false
-      #check-tx-leaks: true
+      check-tx-leaks: true
       # Regex patterns for acceptable `SELECT *` usage.
       # Default:
       # - "SELECT \\* FROM information_schema\\..*"

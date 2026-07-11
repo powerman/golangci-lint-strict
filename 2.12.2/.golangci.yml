@@ -22,6 +22,8 @@ linters:
     - wsl # Questionable (too much style differences, hard to consider).
     - wsl_v5 # Questionable (too much style differences, hard to consider).
   settings:
+    copyloopvar:
+      check-alias: true
     decorder:
       disable-init-func-first-check: false # `init` funcs have to be declared before all other functions.
     depguard:
@@ -153,6 +155,7 @@ linters:
         - opaque # Identifies functions that return interfaces, but the actual returned value is always a single concrete implementation.
         - unexported # Identifies interfaces that are not exported but are used in exported functions or methods.
     importas:
+      no-unaliased: true
       alias:
         - pkg: errors
           alias: ""
@@ -166,6 +169,7 @@ linters:
     nestif:
       min-complexity: 4
     nilnil:
+      only-two: false
       detect-opposite: true
     nolintlint:
       require-explanation: true # Disable linters this way: //nolint:first,second // Reason here.
@@ -176,6 +180,8 @@ linters:
       patterns:
         - .* # Check all global variables.
     revive:
+      directives:
+        - name: specify-disable-reason
       rules:
         - name: add-constant
           disabled: true # Duplicates goconst and mnd linters.
@@ -328,6 +334,26 @@ linters:
         - msg # Used by standard slog.JSONHandler or slog.TextHandler.
         - source # Used by standard slog.JSONHandler or slog.TextHandler.
       key-naming-case: snake
+    spancheck:
+      checks:
+        - end
+        - record-error
+        - set-status
+    staticcheck:
+      checks:
+        - all
+        - -ST1000 # Duplicates revive:package-comments.
+        - -ST1001 # Duplicates revive:dot-imports.
+        - -ST1003 # Duplicates revive:var-naming, revive:error-naming, revive:package-naming, revive:import-alias-naming.
+        - -ST1005 # Duplicates revive:string-format and revive:error-strings.
+        - -ST1006 # Duplicates revive:receiver-naming.
+        - -ST1008 # Duplicates revive:error-return.
+        - -ST1012 # Duplicates errname linter.
+        - -ST1016 # Duplicates revive:receiver-naming (consistency).
+        - -ST1019 # Duplicates revive:duplicated-imports.
+        - -ST1020 # Duplicates godoclint.
+        - -ST1021 # Duplicates godoclint.
+        - -ST1022 # Duplicates godoclint.
     tagalign:
       order:
         - json
@@ -380,6 +406,12 @@ linters:
       default-rpc-path: true
       sql-isolation-level: true
       tls-signature-scheme: true
+    usetesting:
+      os-temp-dir: true
+      context-background: true
+      context-todo: true
+    unqueryvet:
+      check-tx-leaks: true
     wrapcheck:
       report-internal-errors: true
   exclusions:
